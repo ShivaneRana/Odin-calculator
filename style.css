@@ -1,5 +1,4 @@
 *{
-    background-color:red;
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -11,5 +10,12 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+}
+
+#main{
+    height: 70%;
+    width: 90%;
+    background-color: blue;
+    border-radius:40px;
+    border: 10px black solid;
 }
