@@ -13,29 +13,3 @@ body{
     align-items: center;
     overflow: hidden;
 }
-
-#main{
-    height: 1400px;
-    width: 960px;
-    background-color: palevioletred;
-    display: flex;
-    flex-direction:column;
-    justify-content:space-around;
-    padding: 10px;
-}
-
-#displayArea{
-    height: 200px;
-    width: 930px;
-    background-color: aqua;
-    display: flex;
-    align-self: center;
-}
-
-#buttonArea{
-    height: 1150px;
-    width: 930px;
-    background-color: blue;
-    display: flex;
-    align-self: center;
-}
