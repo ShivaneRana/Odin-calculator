@@ -12,3 +12,29 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+#main{
+    height: 1200px;
+    width: 960px;
+    background-color: palevioletred;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    padding: 10px;
+}
+
+#displayArea{
+    height: 200px;
+    width: 900px;
+    background-color: aqua;
+    display: flex;
+    align-self: center;
+}
+
+#buttonArea{
+    height: 900px;
+    width: 900px;
+    background-color: blue;
+    display: flex;
+    align-self: center;
+}
