@@ -13,8 +13,8 @@ body{
 }
 
 #main{
-    height: 1700px;
-    width: 890px;
+    height: 815px;
+    width: 412px;
     background-color: blue;
     border-radius:40px;
     border: 10px black solid;
@@ -26,14 +26,14 @@ body{
 
 #displayArea{
     background-color: pink;
-    height:500px;
+    height:30%;
     width:100%;
     border-radius: 40px;
 }
 
 #buttonArea{
     background-color: yellowgreen;
-    height: 1200px;
+    height: 70%;
     width: 100%;
     border-radius: 50px;
 }
