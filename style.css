@@ -13,18 +13,27 @@ body{
 }
 
 #main{
-    height: 70%;
-    width: 90%;
+    height: 1700px;
+    width: 890px;
     background-color: blue;
     border-radius:40px;
     border: 10px black solid;
-    box-shadow:  20px 20px rgba(0,0,0);
+    box-shadow:  25px 25px rgba(0,0,0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #displayArea{
-
+    background-color: pink;
+    height:500px;
+    width:100%;
+    border-radius: 40px;
 }
 
 #buttonArea{
-    
+    background-color: yellowgreen;
+    height: 1200px;
+    width: 100%;
+    border-radius: 50px;
 }
