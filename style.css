@@ -29,6 +29,22 @@ body{
     height:30%;
     width:100%;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+#computedResult{
+    height: 50%;
+    width: 100%;
+    background-color: aquamarine;
+}
+
+#history{
+    height: 20%;
+    width: 100%;
+    background-color: cadetblue;
 }
 
 #buttonArea{
@@ -36,4 +52,60 @@ body{
     height: 70%;
     width: 100%;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonContainer{
+    background-color: cadetblue;
+    height: 80%;
+    width: 95%;
+}
+
+
+#row1,#row2,#row3,#row4,#row5{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    background-color:gray;
+    border: 2px black solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* this is for the color scheme of the numerical buttons */
+.defaultStyle{
+    background-color: blueviolet;
+    border: 2px black solid;
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+}
+
+.defaultStyle:hover{
+    background-color: pink;
+}
+
+.defaultStyle:active{
+    background-color: palevioletred;
+}
+
+/*this is for the color scheme of the non-numerical buttons*/
+.specialStyle{
+    background-color:orange;
+    border: 2px black solid;
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+}
+
+.specialStyle:hover{
+    background-color: rgb(246, 222, 177);
+}
+
+.specialStyle:active{
+    background-color: orangered;
 }
