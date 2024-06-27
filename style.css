@@ -71,18 +71,21 @@ body{
     background-color:gray;
     border: 2px black solid;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
 }
+
 
 /* this is for the color scheme of the numerical buttons */
 .defaultStyle{
     background-color: blueviolet;
     border: 2px black solid;
-    border-radius: 5px;
-    height: 50px;
-    width: 50px;
+    border-radius: 10px;
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .defaultStyle:hover{
@@ -97,9 +100,11 @@ body{
 .specialStyle{
     background-color:orange;
     border: 2px black solid;
-    border-radius: 5px;
-    height: 50px;
-    width: 50px;
+    border-radius: 10px;
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .specialStyle:hover{
@@ -108,4 +113,31 @@ body{
 
 .specialStyle:active{
     background-color: orangered;
+}
+
+#clearDisplay{
+    width:100px;
+}
+
+#delete{
+    width:100px;
+}
+
+#result{
+    width: 140px;
+}
+
+#computedResult,#history{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#computedResult{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#history{
+    font-weight: lighter;
 }
