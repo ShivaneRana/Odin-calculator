@@ -14,14 +14,14 @@ del.addEventListener("click",() => {
     history.textContent = arr.join("");
     if(value1 !== "" && value2 === "" && valueOperator === ""){
         value1 = arr.join("");
-        console.log(value1)
+        console.log(`Current value of value1: ${value1}`);
     }else if(value2 !== "" && value1 !== "" && valueOperator !== ""){
         value2 = arr.join("");
-        console.log(value2)
+        console.log(`Current value of value2: ${value2}`);
     }else{
         value1 !== "" && value2 === "" && valueOperator !== ""
             valueOperator = arr.join("");
-            console.log(valueOperator)
+            console.log(`Current value of valueoperator${valueOperator}`)
 }})
 
 //clears all that is on the screen
