@@ -84,10 +84,37 @@ arrayOperation.shift()
 arrayOperation.forEach(item => {
     item.addEventListener("click",function(event){
         const target = event.target.dataset.operation;
+        if(value1 !== "" && value2 !== "" && valueOperator !== ""){
+            if(valueOperator === "+"){
+                value1 = obj.add(value1,value2);
+                history.textContent = valueOperator;
+                console.log(`updated value of value1: ${value1}`);
+                value2 = "";
+            }
+            else if(valueOperator === "-"){
+                value1 = obj.sub(value1,value2);
+                history.textContent = valueOperator;
+                console.log(`updated value of value1: ${value1}`);
+                value2 = "";
+            }
+            else if(valueOperator === "x"){
+                value1 = obj.multi(value1,value2);
+                history.textContent = valueOperator;
+                console.log(`updated value of value1: ${value1}`);
+                value2 = "";
+            }
+            else if(valueOperator === "/"){
+                value1 = obj.divide(value1,value2);
+                history.textContent = valueOperator;
+                console.log(`updated value of value1: ${value1}`);
+                value2 = "";
+            }
+        }else{
         valueOperator = target;
         history.textContent = "";
-        history.textContent = target;
-        console.log(`current value of valueOperator: ${valueOperator}`);
+        history.textContent = valueOperator;
+        console.log(`current value of valueOperator: ${valueOperator}`);}
+        valueOperator = target
     });
 })
 
@@ -95,21 +122,15 @@ arrayOperation.forEach(item => {
 const obj = {
     add(num1,num2){
         let anwser = +num1+ +num2;
-        computedResult.textContent = anwser;
-        history.textContent = `${num1} + ${num2}`;
-        console.log(`Calculation result:${anwser}`);
+        return anwser;
     },
     sub(num1,num2){
         let anwser = +num1 - +num2;
-        computedResult.textContent = anwser;
-        history.textContent = `${num1} - ${num2}`;
-        console.log(`Calculation result:${anwser}`);
+        return anwser
     },
     multi(num1,num2){
         let anwser = +num1 * +num2;
-        computedResult.textContent = anwser;
-        history.textContent = `${num1} x ${num2}`;
-        console.log(`Calculation result:${anwser}`);
+        return anwser;
     },
     divide(num1,num2){
         if(num2 == 0){
@@ -117,9 +138,7 @@ const obj = {
             return computedResult.textContent = "U sure mate?";
         }else{
         let anwser = (+num1 / +num2).toFixed(5);
-        computedResult.textContent = anwser;
-        history.textContent = `${num1} / ${num2}`;
-        console.log(`Calculation result:${anwser}`);
+        return anwser;
         }
     }
 }
@@ -127,12 +146,24 @@ const obj = {
 //result button logic
 result.addEventListener("click",() => {
     if(valueOperator === "+"){
-        obj.add(value1,value2)
+        let anwser = obj.add(value1,value2);
+        computedResult.textContent = anwser;
+        history.textContent = `${value1} + ${value2}`;
+        console.log(`Calculation result:${anwser}`);
     }else if(valueOperator === "-"){
-        obj.sub(value1,value2);
+        let anwser = obj.sub(value1,value2);
+        computedResult.textContent = anwser;
+        history.textContent = `${value1} - ${value2}`;
+        console.log(`Calculation result:${anwser}`);
     }else if(valueOperator === "x"){
-        obj.multi(value1,value2);
+        let anwser = obj.multi(value1,value2);
+        computedResult.textContent = anwser;
+        history.textContent = `${value1} x ${value2}`;
+        console.log(`Calculation result:${anwser}`);
     }else if(valueOperator === "/"){
-        obj.divide(value1,value2);
+        let anwser = obj.divide(value1,value2);
+        computedResult.textContent = anwser;
+        history.textContent = `${value1} / ${value2}`;
+        console.log(`Calculation result:${anwser}`);
     }
 })
