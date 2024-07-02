@@ -3,76 +3,136 @@ const clear = document.querySelector("#clearDisplay");
 const result = document.querySelector("#result");
 let computedResult = document.querySelector("#computedResult")
 let history = document.querySelector("#history");
-// const num1  = document.querySelector("#num1");
-// const num2  = document.querySelector("#num2");
-// const num3  = document.querySelector("#num3");
-// const num4  = document.querySelector("#num4");
-// const num5  = document.querySelector("#num5");
-// const num6  = document.querySelector("#num6");
-// const num7  = document.querySelector("#num7");
-// const num8  = document.querySelector("#num8");
-// const num9  = document.querySelector("#num9");
-let computednum1 = 0;
-let computedoperator = "";
-let computednum2 = 0;
+let value1 = "";
+let valueOperator = "";
+let value2 = "";
 
 //this is for remove last digit of the calculation
 del.addEventListener("click",() => {
     let arr = history.textContent.split("").filter((item) => item != " ").filter((item) => item != "\n");
     arr.pop();
-    console.log(arr)
     history.textContent = arr.join("");
-})
+    if(value1 !== "" && value2 === "" && valueOperator === ""){
+        value1 = arr.join("");
+        console.log(value1)
+    }else if(value2 !== "" && value1 !== "" && valueOperator !== ""){
+        value2 = arr.join("");
+        console.log(value2)
+    }else{
+        value1 !== "" && value2 === "" && valueOperator !== ""
+            valueOperator = arr.join("");
+            console.log(valueOperator)
+}})
 
 //clears all that is on the screen
 clear.addEventListener("click", () => {
     computedResult.textContent = "";
-    history.textContent = ""; 
+    history.textContent = "";
+    value1 = "";
+    valueOperator = "";
+    value2 = "";
+    console.log("-".repeat(50));
+    console.log("value1 has been cleared");
+    console.log("valueOperator has been cleared");
+    console.log("value2 has been cleared");
+    console.log("history has been cleared")
+    console.log("computedResult has been cleared");
+    console.log("-".repeat(50));
 });
 
 
-//list of all operation of the calculator
-const operationList = {
-    add(a,b){
-        console.log(num1+num2);
+//this will detect input of the numerical key button
+const button = document.querySelectorAll(".defaultStyle");
+const arrayButton = Array.from(button)
+
+arrayButton.forEach(item => {
+    item.addEventListener("click",function(event){
+        const target = event.target.dataset.number;
+        //this is used to check if value1 is added before valueOperator or not
+        if(valueOperator !== "" && value1 === ""){
+            value1 = +value1;
+            value2 += target;
+            history.textContent = value2;
+            console.log(`current value of Value2: ${value2}`);
+            //this is used to check if valueOperator is added after value1 or not
+        }else if(valueOperator !== ""){
+            value2 += target;
+            history.textContent = value2;
+            console.log(`current value of Value2: ${value2}`);
+        }
+        //this assign value directly to value1
+        else{
+        value1 += target;
+        history.textContent += target;
+        console.log(`current value of value1: ${value1}`);
+        }
+    })
+})
+
+
+//this will group all operator button in a nodelist
+const buttonOperation = document.querySelectorAll(".specialStyle");
+const arrayOperation = Array.from(buttonOperation);
+arrayOperation.forEach((item,index) => {
+    if(item.dataset.operation === undefined){
+        arrayOperation.splice(index,1);
+    }
+})
+arrayOperation.shift()
+
+//this will detect the input of all the non numerical key in the button
+arrayOperation.forEach(item => {
+    item.addEventListener("click",function(event){
+        const target = event.target.dataset.operation;
+        valueOperator = target;
+        history.textContent = "";
+        history.textContent = target;
+        console.log(`current value of valueOperator: ${valueOperator}`);
+    });
+})
+
+//this object contains function for all the arthematic operation
+const obj = {
+    add(num1,num2){
+        let anwser = +num1+ +num2;
+        computedResult.textContent = anwser;
+        history.textContent = `${num1} + ${num2}`;
+        console.log(`Calculation result:${anwser}`);
     },
-    sub(a,b){
-        console.log(a-b);
+    sub(num1,num2){
+        let anwser = +num1 - +num2;
+        computedResult.textContent = anwser;
+        history.textContent = `${num1} - ${num2}`;
+        console.log(`Calculation result:${anwser}`);
     },
-    multi(a,b){
-        console.log(a*b);	
+    multi(num1,num2){
+        let anwser = +num1 * +num2;
+        computedResult.textContent = anwser;
+        history.textContent = `${num1} x ${num2}`;
+        console.log(`Calculation result:${anwser}`);
     },
-    div(a,b){
-        console.log(a%b);
-    },
-    operate(num1,ope,num2){
-        if(ope === "+"){
-            add(num1,num2);
-        }else if(ope === "-"){
-            sub(num1,num2);
-        }else if(ope === "*"){
-            multi(num1,num2);
-        }else if(ope === "/"){
-            div(num1,num2);
+    divide(num1,num2){
+        if(num2 == 0){
+            history.textContent = `${num1} / ${num2}`;
+            return computedResult.textContent = "U sure mate?";
+        }else{
+        let anwser = (+num1 / +num2).toFixed(5);
+        computedResult.textContent = anwser;
+        history.textContent = `${num1} / ${num2}`;
+        console.log(`Calculation result:${anwser}`);
         }
     }
 }
 
-//this will detect input of the numerical key button
-const button = document.querySelectorAll(".defaultStyle");
-console.log(button);
-button.forEach(item => {
-    item.addEventListener("click",function(event){
-        console.log(event.target.dataset.number);
-    })
+//result button logic
+result.addEventListener("click",() => {
+    if(valueOperator === "+"){
+        obj.add(value1,value2)
+    }else if(valueOperator === "-"){
+        obj.sub(value1,value2);
+    }else if(valueOperator === "x"){
+        obj.multi(value1,value2);
+    }else if(valueOperator === "/"){
+        obj.divide(value1,value2);
+    }
 })
-
-//this will detect the input of all the non numerical key in the button
-const buttonOperation = document.querySelectorAll(".specialStyle");
-console.log(buttonOperation);
-buttonOperation.forEach(item => {
-    item.addEventListener("click",function(event){
-        console.log(event.target.dataset.operation);
-    });
-})
-
