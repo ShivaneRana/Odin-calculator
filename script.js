@@ -125,7 +125,7 @@ const obj = {
         return anwser;
     },
     sub(num1,num2){
-        let anwser = (+num1 - +num2.toFixed(5));
+        let anwser = (+num1 - +num2).toFixed(5);
         return anwser
     },
     multi(num1,num2){
