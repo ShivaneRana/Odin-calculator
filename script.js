@@ -112,24 +112,24 @@ arrayOperation.forEach(item => {
         }else{
         valueOperator = target;
         history.textContent = "";
-        history.textContent = valueOperator;
         console.log(`current value of valueOperator: ${valueOperator}`);}
-        valueOperator = target
+        valueOperator = target;
+        history.textContent = valueOperator;
     });
 })
 
 //this object contains function for all the arthematic operation
 const obj = {
     add(num1,num2){
-        let anwser = +num1+ +num2;
+        let anwser = (+num1+ +num2).toFixed(5);
         return anwser;
     },
     sub(num1,num2){
-        let anwser = +num1 - +num2;
+        let anwser = (+num1 - +num2.toFixed(5));
         return anwser
     },
     multi(num1,num2){
-        let anwser = +num1 * +num2;
+        let anwser = (+num1 * +num2).toFixed(5);
         return anwser;
     },
     divide(num1,num2){
