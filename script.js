@@ -134,7 +134,7 @@ const obj = {
         num1 = num1.toString();
         num2 = num2.toString();
         if(num1.includes(".") || num2.includes('.')){
-            let anwser = (+num1+ +num2).toFixed(5);
+            let anwser = (+num1+ +num2).toFixed(2);
             return anwser;
         }else{
         let anwser = +num1+ +num2;
@@ -144,7 +144,7 @@ const obj = {
         num1 = num1.toString();
         num2 = num2.toString();
         if(num1.includes(".") || num2.includes(".")){
-            let anwser = (+num1 - +num2).toFixed(5);
+            let anwser = (+num1 - +num2).toFixed(2);
             return anwser;
         }else{
         let anwser = +num1 - +num2;
@@ -154,7 +154,7 @@ const obj = {
         num1 = num1.toString();
         num2 = num2.toString();
         if(num1.includes(".") || num2.includes(".")){
-            let anwser = (+num1 * +num2).toFixed(5);
+            let anwser = (+num1 * +num2).toFixed(2);
             return anwser;
         }else{
         let anwser = +num1 * +num2;
@@ -165,10 +165,10 @@ const obj = {
         num2 = num2.toString();
         if(num2 == 0){
             history.textContent = `${num1} / ${num2}`;
-            return computedResult.textContent = "U sure mate?";
+            return computedResult.textContent = "LMA0";
         }else{
             if(num1.includes(".") || num2.includes(".")){
-                let anwser = (+num1 / +num2).toFixed(5);
+                let anwser = (+num1 / +num2).toFixed(2);
                 return anwser;    
             }
             else{
