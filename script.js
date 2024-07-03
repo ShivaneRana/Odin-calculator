@@ -7,6 +7,7 @@ let value1 = "";
 let valueOperator = "";
 let value2 = "";
 
+
 //this is for remove last digit of the calculation
 del.addEventListener("click",() => {
     let arr = history.textContent.split("").filter((item) => item != " ").filter((item) => item != "\n");
@@ -121,24 +122,42 @@ arrayOperation.forEach(item => {
 //this object contains function for all the arthematic operation
 const obj = {
     add(num1,num2){
-        let anwser = (+num1+ +num2).toFixed(5);
-        return anwser;
+        if(num1.includes(".") || num2.includes('.')){
+            let anwser = (+num1+ +num2).toFixed(5);
+            return anwser;
+        }else{
+        let anwser = +num1+ +num2;
+        return anwser;}
     },
     sub(num1,num2){
-        let anwser = (+num1 - +num2).toFixed(5);
-        return anwser
+        if(num1.includes(".") || num2.includes(".")){
+            let anwser = (+num1 - +num2).toFixed(5);
+            return anwser;
+        }else{
+        let anwser = +num1 - +num2;
+        return anwser}
     },
     multi(num1,num2){
-        let anwser = (+num1 * +num2).toFixed(5);
-        return anwser;
+        if(num1.includes(".") || num2.includes(".")){
+            let anwser = (+num1 * +num2).toFixed(5);
+            return anwser;
+        }else{
+        let anwser = +num1 * +num2;
+        return anwser;}
     },
     divide(num1,num2){
         if(num2 == 0){
             history.textContent = `${num1} / ${num2}`;
             return computedResult.textContent = "U sure mate?";
         }else{
-        let anwser = (+num1 / +num2).toFixed(5);
-        return anwser;
+            if(num1.includes(".") || num2.includes(".")){
+                let anwser = (+num1 / +num2).toFixed(5);
+                return anwser;    
+            }
+            else{
+            let anwser = +num1 / +num2;
+            return anwser;
+        }
         }
     }
 }
