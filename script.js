@@ -1,8 +1,10 @@
 const del = document.querySelector("#delete");
 const clear = document.querySelector("#clearDisplay");
 const result = document.querySelector("#result");
+const decimal = document.querySelector("#decimal");
 let computedResult = document.querySelector("#computedResult")
 let history = document.querySelector("#history");
+let currentValue = "";
 let value1 = "";
 let valueOperator = "";
 let value2 = "";
@@ -45,6 +47,13 @@ clear.addEventListener("click", () => {
 //this will detect input of the numerical key button
 const button = document.querySelectorAll(".defaultStyle");
 const arrayButton = Array.from(button)
+
+//removes decimal from the array for numerical numbers
+arrayButton.forEach((item,index) => {
+    if(item.dataset.number === "."){
+        arrayButton.splice(index,1);
+    }
+})
 
 arrayButton.forEach(item => {
     item.addEventListener("click",function(event){
@@ -122,6 +131,8 @@ arrayOperation.forEach(item => {
 //this object contains function for all the arthematic operation
 const obj = {
     add(num1,num2){
+        num1 = num1.toString();
+        num2 = num2.toString();
         if(num1.includes(".") || num2.includes('.')){
             let anwser = (+num1+ +num2).toFixed(5);
             return anwser;
@@ -130,6 +141,8 @@ const obj = {
         return anwser;}
     },
     sub(num1,num2){
+        num1 = num1.toString();
+        num2 = num2.toString();
         if(num1.includes(".") || num2.includes(".")){
             let anwser = (+num1 - +num2).toFixed(5);
             return anwser;
@@ -138,6 +151,8 @@ const obj = {
         return anwser}
     },
     multi(num1,num2){
+        num1 = num1.toString();
+        num2 = num2.toString();
         if(num1.includes(".") || num2.includes(".")){
             let anwser = (+num1 * +num2).toFixed(5);
             return anwser;
@@ -146,6 +161,8 @@ const obj = {
         return anwser;}
     },
     divide(num1,num2){
+        num1 = num1.toString();
+        num2 = num2.toString();
         if(num2 == 0){
             history.textContent = `${num1} / ${num2}`;
             return computedResult.textContent = "U sure mate?";
@@ -184,5 +201,26 @@ result.addEventListener("click",() => {
         computedResult.textContent = anwser;
         history.textContent = `${value1} / ${value2}`;
         console.log(`Calculation result:${anwser}`);
+    }
+})
+
+//decimal button logic
+decimal.addEventListener("click",() => {
+    if(value1 !== "" && value2 === ""){
+        //this makes it impossible to use more than one decimal point in a value
+        if(value1.includes(".")){
+            value1 += "";
+        }else{
+            value1 += decimal.dataset.number;
+            history.textContent = value1;
+        }
+    }else if(value1 !== "" && value2 !== ""){
+        //this makes it impossible to use more than one decimal point in a value
+        if(value2.includes(".")){
+            value2 += "";
+        }else{
+            value2 += decimal.dataset.number;
+            history.textContent = value2;
+        }
     }
 })
