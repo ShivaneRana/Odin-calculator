@@ -37,15 +37,30 @@ body{
     padding: 10px;
 }
 
+
+#computedResult,#history{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
 #computedResult{
     height: 50%;
     width: 100%;
+    font-size: 30px;
+    font-weight: bolder;
+    border-radius: 10px;
+    padding-right: 5px;
+    overflow-wrap: anywhere;
 }
 
 #history{
     height: 20%;
     width: 100%;
+    font-size: 70%;
+    font-weight: lighter;
     padding-right: 5px;
+    overflow: anywhere;
 }
 
 #buttonArea{
@@ -130,19 +145,4 @@ body{
 
 #result{
     width: 140px;
-}
-
-#computedResult,#history{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-}
-
-#computedResult{
-    font-size: 50px;
-    font-weight: bold;
-}
-
-#history{
-    font-weight: lighter;
 }
