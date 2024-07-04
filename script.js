@@ -60,7 +60,6 @@ arrayButton.forEach(item => {
         const target = event.target.dataset.number;
         //this is used to check if value1 is added before valueOperator or not
         if(valueOperator !== "" && value1 === ""){
-            value1 = +value1;
             value2 += target;
             history.textContent = value2;
             console.log(`current value of Value2: ${value2}`);
