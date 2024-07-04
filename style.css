@@ -40,14 +40,12 @@ body{
 #computedResult{
     height: 50%;
     width: 100%;
-    background-color: red;
 }
 
 #history{
     height: 20%;
     width: 100%;
     padding-right: 5px;
-    background-color: palevioletred;
 }
 
 #buttonArea{
