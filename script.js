@@ -8,6 +8,7 @@ let currentValue = "";
 let value1 = "";
 let valueOperator = "";
 let value2 = "";
+let checkIfResultHasBeenPressed = false;
 
 
 //this is for remove last digit of the calculation
@@ -29,8 +30,8 @@ del.addEventListener("click",() => {
 
 //clears all that is on the screen
 clear.addEventListener("click", () => {
-    computedResult.textContent = "";
-    history.textContent = "";
+    computedResult.textContent = "Display Cleared";
+    history.textContent = "all values cleared";
     value1 = "";
     valueOperator = "";
     value2 = "";
@@ -57,23 +58,45 @@ arrayButton.forEach((item,index) => {
 
 arrayButton.forEach(item => {
     item.addEventListener("click",function(event){
+        computedResult.textContent = "";
+        history.textContent = "";
+        if(checkIfResultHasBeenPressed === true){
+            resetAfterResult(checkIfResultHasBeenPressed);
+            checkIfResultHasBeenPressed = false
+        }
         const target = event.target.dataset.number;
+        //this assign value directyly to  value2
         //this is used to check if value1 is added before valueOperator or not
         if(valueOperator !== "" && value1 === ""){
-            value2 += target;
-            history.textContent = value2;
-            console.log(`current value of Value2: ${value2}`);
-            //this is used to check if valueOperator is added after value1 or not
+            if(value2.length >= 25){
+                value2 += "";
+                console.log("no new value can be added as max number limit reached");
+            }else{
+                value2 += target;
+                history.textContent = value2;
+                console.log(`current value of Value2: ${value2}`);    
+            }//this is used to check if valueOperator is added after value1 or not
         }else if(valueOperator !== ""){
-            value2 += target;
-            history.textContent = value2;
-            console.log(`current value of Value2: ${value2}`);
+            if(value2.length >= 25){
+                value2 += "";
+                console.log("no new value can be added as max number limit reached");
+            }else{
+                value2 += target;
+                history.textContent = value2;
+                console.log(`current value of Value2: ${value2}`);
+            }
         }
         //this assign value directly to value1
         else{
-        value1 += target;
-        history.textContent += target;
-        console.log(`current value of value1: ${value1}`);
+            if(value1.length >= 25){
+                value1 += "";
+                console.log("No new value was added as max number limit reached");
+
+            }else{
+            computedResult.textContent = "";
+            value1 += target;
+            history.textContent = value1;
+            console.log(`current value of value1: ${value1}`);}
         }
     })
 })
@@ -92,6 +115,17 @@ arrayOperation.shift()
 //this will detect the input of all the non numerical key in the button
 arrayOperation.forEach(item => {
     item.addEventListener("click",function(event){
+        computedResult.textContent = "";
+        history.textContent = "";
+        if(value1 === ""){
+            value1 = +"";
+        }else if(value2 === ""){
+            value2 = +"";
+        }
+        if(checkIfResultHasBeenPressed === true){
+            resetAfterResult(checkIfResultHasBeenPressed);
+            checkIfResultHasBeenPressed = false
+        }
         const target = event.target.dataset.operation;
         if(value1 !== "" && value2 !== "" && valueOperator !== ""){
             if(valueOperator === "+"){
@@ -180,6 +214,7 @@ const obj = {
 
 //result button logic
 result.addEventListener("click",() => {
+    checkIfResultHasBeenPressed = true;
     if(valueOperator === "+"){
         let anwser = obj.add(value1,value2);
         computedResult.textContent = anwser;
@@ -223,3 +258,24 @@ decimal.addEventListener("click",() => {
         }
     }
 })
+
+//this function is there to make sure that when a button is pressed after result
+//has been recevied it will clear all the content
+function resetAfterResult(condition){
+    if(condition === true){
+        computedResult.textContent = "";
+        history.textContent = "";
+        value1 = "";
+        valueOperator = "";
+        value2 = "";
+        console.log("-".repeat(50));
+        console.log("value1 has been cleared");
+        console.log("valueOperator has been cleared");
+        console.log("value2 has been cleared");
+        console.log("history has been cleared")
+        console.log("computedResult has been cleared");
+        console.log("-".repeat(50));
+    }else{
+        console.log("this code failed")
+    }
+}
