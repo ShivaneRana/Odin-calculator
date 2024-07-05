@@ -10,7 +10,6 @@ let valueOperator = "";
 let value2 = "";
 let checkIfResultHasBeenPressed = false;
 
-
 //this is for remove last digit of the calculation
 del.addEventListener("click",() => {
     let arr = history.textContent.split("").filter((item) => item != " ").filter((item) => item != "\n");
