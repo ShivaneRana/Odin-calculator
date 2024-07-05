@@ -115,14 +115,12 @@ arrayOperation.shift()
 //this will detect the input of all the non numerical key in the button
 arrayOperation.forEach(item => {
     item.addEventListener("click",function(event){
-
-
         computedResult.textContent = "";
         history.textContent = "";
         if(value1 === ""){
-            value1 = +"";
+            value1 = "";
         }else if(value2 === ""){
-            value2 = +"";
+            value2 = "";
         }
         if(checkIfResultHasBeenPressed === true){
             resetAfterResult(checkIfResultHasBeenPressed);
