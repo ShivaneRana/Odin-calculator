@@ -115,6 +115,8 @@ arrayOperation.shift()
 //this will detect the input of all the non numerical key in the button
 arrayOperation.forEach(item => {
     item.addEventListener("click",function(event){
+
+
         computedResult.textContent = "";
         history.textContent = "";
         if(value1 === ""){
@@ -127,6 +129,7 @@ arrayOperation.forEach(item => {
             checkIfResultHasBeenPressed = false
         }
         const target = event.target.dataset.operation;
+
         if(value1 !== "" && value2 !== "" && valueOperator !== ""){
             if(valueOperator === "+"){
                 value1 = obj.add(value1,value2);
