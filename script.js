@@ -10,6 +10,7 @@ let valueOperator = "";
 let value2 = "";
 let checkIfResultHasBeenPressed = false;
 
+
 //this is for remove last digit of the calculation
 del.addEventListener("click",() => {
     let arr = history.textContent.split("").filter((item) => item != " ").filter((item) => item != "\n");
@@ -117,15 +118,16 @@ arrayOperation.forEach(item => {
         computedResult.textContent = "";
         history.textContent = "";
         if(value1 === ""){
-            value1 = +"";
+            value1 = "";
         }else if(value2 === ""){
-            value2 = +"";
+            value2 = "";
         }
         if(checkIfResultHasBeenPressed === true){
             resetAfterResult(checkIfResultHasBeenPressed);
             checkIfResultHasBeenPressed = false
         }
         const target = event.target.dataset.operation;
+
         if(value1 !== "" && value2 !== "" && valueOperator !== ""){
             if(valueOperator === "+"){
                 value1 = obj.add(value1,value2);
